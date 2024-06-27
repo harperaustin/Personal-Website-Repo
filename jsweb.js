@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (index1 < text1.length){
             typingtext1.textContent += text1.charAt(index1);
             index1++;
-            setTimeout(typeOut, 100);
+            setTimeout(typeOut, 80);
         } else {
             setTimeout(typeOut2, 600)
         }
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (index2 < text2.length){
             typingtext2.textContent += text2.charAt(index2);
             index2++;
-            setTimeout(typeOut2,100)
+            setTimeout(typeOut2,80)
         }
     }
 
