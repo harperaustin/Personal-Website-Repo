@@ -20,8 +20,7 @@
 }
 
 #content {
-    padding-top: 70vh;
-    padding-left: 75px;
+    padding-top: 80px;
     font-family: VT323;
     color: rgb(150, 254, 97);
     text-shadow: 1px 1px 2px rgb(130, 167, 70), 0 0 1em rgb(133, 173, 74), 0 0 0.2em rgb(140, 182, 81)
@@ -33,10 +32,11 @@ body {
 
 #title {
     font-size: 40px;
-    text-align: left;
+    text-align: center;
 }
     
 
 #about {
     font-size: 30px;
+    text-align: center;
 }
