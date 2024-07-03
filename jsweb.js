@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const typingtext8 = document.getElementById("command5")
     const typingtext9 = document.getElementById("command6")
     const typingtext10 = document.getElementById("command7")
-
     let index = 0;
     function typeOut() {
         if (index < text1.length){
@@ -126,10 +125,36 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(typeOut10,30)
         } else {
             index = 0;
+            textarea.value = prompt
         }
     }
 
-    
+    const textarea = document.getElementById("input");
+    const prompt = '> ';
+
+
+    textarea.addEventListener('input', (e) => {
+        const inputValue = e.target.value;
+        if(!inputValue.startsWith(prompt)) {
+            if(inputValue.startsWith(">")){
+                e.target.value = prompt + inputValue.replace(">", '');
+            } else if(inputValue.startsWith(" ")){
+                e.target.value = prompt + inputValue.replace(" ", '');
+            }
+        }
+    })
+
+    textarea.addEventListener('keydown', (e)=> {
+        const inputValue = e.target.value;
+        
+        if ((e.key === 'Backspace' || e.key === 'Delete') && inputValue === prompt) {
+            e.preventDefault();
+        }
+
+
+    })
 
     typeOut();
 });
+
+
