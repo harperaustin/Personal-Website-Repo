@@ -126,6 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             index = 0;
             textarea.value = prompt
+            textarea.disabled = false;
         }
     }
 
@@ -151,8 +152,25 @@ document.addEventListener("DOMContentLoaded", function() {
             e.preventDefault();
         }
 
+        if(e.key === 'Enter') {
+            const command = textarea.value.toUpperCase();
+            processCommand(command);
+            textarea.value = "> "
+        }
 
     })
+
+    function processCommand(command) {
+        switch (command) {
+            case "> ABT":
+                document.getElementById("info").textContent = "About Me"
+                break;
+            default: 
+                document.getElementById("info").textContent = "Command not recognized."
+                break;
+        }
+       
+    }
 
     typeOut();
 });
