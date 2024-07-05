@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const text8= "-SKL -----> Skills, Languages, Certifications"
     const text9= "-COT -----> Contact info, Resume, GitHub"
     const text10= "-FUN -----> Hobbies, Interests, Fun facts"
+
+    const textABT = "ABOUT INFORMATION"
+    const textNOT = "Command not recognized."
+
     const typingtext1 = document.getElementById("title");
     const typingtext2 = document.getElementById("about");
     const typingtext3 = document.getElementById("commands");
@@ -19,7 +23,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const typingtext8 = document.getElementById("command5")
     const typingtext9 = document.getElementById("command6")
     const typingtext10 = document.getElementById("command7")
+    const output = document.getElementById("info")
     let index = 0;
+    let indexABT = 0;
+    let indexNOT = 0;
     function typeOut() {
         if (index < text1.length){
             typingtext1.textContent += text1.charAt(index);
@@ -130,6 +137,66 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    function typeABT(){
+        if (indexABT < textABT.length) {
+            output.textContent += textABT.charAt(indexABT);
+            indexABT++;
+            setTimeout(typeABT, 30);
+        } else {
+            indexABT = 0;
+        }
+    }
+
+    function typeNOT(){
+        if (indexNOT < textNOT.length) {
+            output.textContent += textNOT.charAt(indexNOT);
+            indexNOT++;
+            setTimeout(typeNOT, 30);
+        } else {
+            indexNOT = 0;
+        }
+    }
+
+
+    
+
+    function eraseOutput(com){
+        const currentText = output.innerText;
+        let currTextIndex = 0;
+
+        function deleteChars(){
+            if (currTextIndex < currentText.length){
+                output.innerText = currentText.substring(currTextIndex + 1);
+                currTextIndex++;
+                setTimeout(deleteChars, 20)
+            } else {
+                switch (com) {
+                    case "ABT":
+                        typeABT();
+                        break;
+                    case "NOT":
+                        typeNOT();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        deleteChars();
+    }
+
+    function processCommand(command) {
+        switch (command) {
+            case "> ABT":
+                eraseOutput("ABT");
+                break;
+            default: 
+                eraseOutput("NOT");
+                break;
+        }
+       
+    }
+
     const textarea = document.getElementById("input");
     const prompt = '> ';
 
@@ -160,17 +227,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     })
 
-    function processCommand(command) {
-        switch (command) {
-            case "> ABT":
-                document.getElementById("info").textContent = "About Me"
-                break;
-            default: 
-                document.getElementById("info").textContent = "Command not recognized."
-                break;
-        }
-       
-    }
+    
 
     typeOut();
 });
