@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const text6= "-WRK -----> Work Experience"
     const text7= "-PRJ -----> Projects"
     const text8= "-SKL -----> Skills, Languages, Certifications"
-    const text9= "-COT -----> Contact info, Resume, GitHub"
+    const text9= "-COT -----> Contact info, Resume, GitHub, LinkedIn"
     const text10= "-FUN -----> Hobbies, Interests, Fun facts"
 
     const textABT = "ABOUT INFORMATION"
@@ -161,15 +161,23 @@ document.addEventListener("DOMContentLoaded", function() {
     
 
     function eraseOutput(com){
-        const currentText = output.innerText;
         let currTextIndex = 0;
+        let currentText = output.innerText;
+
+        //here
+        let currTextArray = output.innerText.split('')
 
         function deleteChars(){
+            
             if (currTextIndex < currentText.length){
-                output.innerText = currentText.substring(currTextIndex + 1);
+                currTextArray[currTextIndex] = ' ';
+                //currentText = output.innerText.substring(currTextIndex + 1);
+                //output.innerText = currentText
+                output.innerText = currTextArray.join('');
                 currTextIndex++;
-                setTimeout(deleteChars, 20)
+                setTimeout(deleteChars, 30)
             } else {
+                output.innerText = ""
                 switch (com) {
                     case "ABT":
                         typeABT();
