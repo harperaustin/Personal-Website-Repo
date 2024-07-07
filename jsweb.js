@@ -10,8 +10,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const text9= "-COT -----> Contact info, Resume, GitHub, LinkedIn"
     const text10= "-FUN -----> Hobbies, Interests, Fun facts"
 
-    const textABT = "ABOUT INFORMATION"
+    const textABT = 
+    "--> Hello, I am Harper Austin and I am from Keller, TX. I am eager to use my technical skills, problem-solving ability, and creative mind to construct effective intersections between technology and fields such as the environment, sports, design, and media."
     const textNOT = "Command not recognized."
+
+    const textEDU = 
+    "--> Pursuing a Bachelor of Science in Computer Science at Brown University.\n--> Relevant Courses: Object-Oriented Programming, Program Design with Data Structures and Algorithms, Discrete Structures and Probability, Linear Algebra, Foundations of AI, Computer Systems.\n--> Clubs: Machine Intelligence Community, Men's Club Soccer.\n--> Current Undergraduate Teaching Assistant for CSCI 0150: Object-Oriented Programming."
+
+    const textWRK = "work"
 
     const typingtext1 = document.getElementById("title");
     const typingtext2 = document.getElementById("about");
@@ -27,6 +33,9 @@ document.addEventListener("DOMContentLoaded", function() {
     let index = 0;
     let indexABT = 0;
     let indexNOT = 0;
+    let indexEDU = 0;
+    let indexWRK = 0;
+
     function typeOut() {
         if (index < text1.length){
             typingtext1.textContent += text1.charAt(index);
@@ -141,8 +150,9 @@ document.addEventListener("DOMContentLoaded", function() {
         if (indexABT < textABT.length) {
             output.textContent += textABT.charAt(indexABT);
             indexABT++;
-            setTimeout(typeABT, 30);
+            setTimeout(typeABT, 20);
         } else {
+            textarea.disabled = false;
             indexABT = 0;
         }
     }
@@ -153,53 +163,47 @@ document.addEventListener("DOMContentLoaded", function() {
             indexNOT++;
             setTimeout(typeNOT, 30);
         } else {
+            textarea.disabled = false;
             indexNOT = 0;
         }
     }
 
-
-    
-
-    function eraseOutput(com){
-        let currTextIndex = 0;
-        let currentText = output.innerText;
-
-        //here
-        let currTextArray = output.innerText.split('')
-
-        function deleteChars(){
-            
-            if (currTextIndex < currentText.length){
-                currTextArray[currTextIndex] = ' ';
-                //currentText = output.innerText.substring(currTextIndex + 1);
-                //output.innerText = currentText
-                output.innerText = currTextArray.join('');
-                currTextIndex++;
-                setTimeout(deleteChars, 30)
-            } else {
-                output.innerText = ""
-                switch (com) {
-                    case "ABT":
-                        typeABT();
-                        break;
-                    case "NOT":
-                        typeNOT();
-                        break;
-                    default:
-                        break;
-                }
-            }
+    function typeEDU(){
+        if (indexEDU < textEDU.length) {
+            output.textContent += textEDU.charAt(indexEDU);
+            indexEDU++;
+            setTimeout(typeEDU,30);
+        } else {
+            textarea.disabled = false;
+            indexEDU = 0;
         }
-        deleteChars();
+    }
+
+    function typeWRK(){
+        if (indexWRK < textWRK.length) {
+            output.textContent += textWRK.charAt(indexWRK);
+            indexWRK++;
+            setTimeout(typeWRK,30);
+        } else {
+            textarea.disabled = false;
+            indexWRK = 0;
+        }
     }
 
     function processCommand(command) {
+        output.innerText = ""
         switch (command) {
             case "> ABT":
-                eraseOutput("ABT");
+                typeABT();
+                break;
+            case "> EDU":
+                typeEDU();
+                break;
+            case "> WRK":
+                typeWRK();
                 break;
             default: 
-                eraseOutput("NOT");
+                typeNOT();
                 break;
         }
        
@@ -229,6 +233,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if(e.key === 'Enter') {
             const command = textarea.value.toUpperCase();
+            textarea.disabled = true;
             processCommand(command);
             textarea.value = "> "
         }
