@@ -11,13 +11,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const text10= "-FUN -----> Hobbies, Interests, Fun facts"
 
     const textABT = 
-    "--> Hello, I am Harper Austin and I am from Keller, TX. I am eager to use my technical skills, problem-solving ability, and creative mind to construct effective intersections between technology and fields such as the environment, sports, design, and media."
+    "-> Hello, I am Harper Austin and I am from Keller, TX. I am eager to use my technical skills, problem-solving ability, and creative mind to construct effective intersections between technology and fields such as the environment, sports, design, and media."
     const textNOT = "Command not recognized."
 
     const textEDU = 
-    "--> Pursuing a Bachelor of Science in Computer Science at Brown University.\n--> Relevant Courses: Object-Oriented Programming, Program Design with Data Structures and Algorithms, Discrete Structures and Probability, Linear Algebra, Foundations of AI, Computer Systems.\n--> Clubs: Machine Intelligence Community, Men's Club Soccer.\n--> Current Undergraduate Teaching Assistant for CSCI 0150: Object-Oriented Programming."
+    "-> Pursuing a Bachelor of Science in Computer Science at Brown University.\n-> Relevant Courses: Object-Oriented Programming, Program Design with Data Structures and Algorithms, Discrete Structures and Probability, Foundations of AI, Computer Systems.\n-> Clubs: Machine Intelligence Community, Men's Club Soccer.\n-> Current Undergraduate Teaching Assistant for CSCI 0150: Object-Oriented Programming."
 
-    const textWRK = "work"
+    const textWRK = "-> Outlier.AI, AI Evaluator, May 2024 - Present\n  --> Evaluated the ability of LLMs to call API tools like Google Maps and Google Search to satisfy user requests.\n\n-> Labelbox, AI Tutor, June 2024 - Present\n  --> Assessed and compared the correctness and completeness of AI-generated responses from models such as Claude 3.5 Sonnet and Gemini 1.5 Pro to fulfill prompts with complex mathematical requests (calculus, number theory, linear algebra)."
+
+    const textPRJ = `-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 250 users. Links: , <Source Code>`
 
     const typingtext1 = document.getElementById("title");
     const typingtext2 = document.getElementById("about");
@@ -35,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let indexNOT = 0;
     let indexEDU = 0;
     let indexWRK = 0;
+    let indexPRJ = 0;
 
     function typeOut() {
         if (index < text1.length){
@@ -190,6 +193,21 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    function typePRJ(){
+        if (indexPRJ < textPRJ.length) {
+            if (output.textContent === "-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 250 users. Links: "){
+                output.innerHTML += `<a href="https://apps.apple.com/us/app/get-productive/id6499282666?itsct=apps_box_link&itscg=30200" target="_blank">App Store</a>`
+            }
+            output.innerHTML += textPRJ.charAt(indexPRJ);
+            indexPRJ++;
+            setTimeout(typePRJ,30);
+        } else {
+            textarea.disabled = false;
+            indexPRJ = 0;
+        }
+    }
+
+
     function processCommand(command) {
         output.innerText = ""
         switch (command) {
@@ -201,6 +219,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 break;
             case "> WRK":
                 typeWRK();
+                break;
+            case "> PRJ":
+                typePRJ();
                 break;
             default: 
                 typeNOT();
