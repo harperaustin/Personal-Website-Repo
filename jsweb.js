@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const textFUN = "-> I've played soccer since I was 3 years old and it's still my favorite sport.\n-> I love traveling and the outdoors. I plan on going to Yellowstone or Yosemite for the first time in the coming years.\n-> I enjoy reading in my free time. My favorite author at the moment is Haruki Murakami."
 
+    const textCOT = "-> Email: jharpaustin@gmail.com\n-> ADD RESUME\n->  \n->  "
+
     const typingtext1 = document.getElementById("title");
     const typingtext2 = document.getElementById("about");
     const typingtext3 = document.getElementById("commands");
@@ -44,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let indexPRJ = 0;
     let indexSKL = 0;
     let indexFUN = 0;
+    let indexCOT = 0;
 
     function typeOut() {
         if (index < text1.length){
@@ -221,6 +224,27 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+
+    function typeCOT(){
+        if (indexCOT < textCOT.length) {
+            if (output.textContent === "-> Email: jharpaustin@gmail.com\n-> ADD RESUME\n-> ") {
+                output.innerHTML += `<a href="https://www.linkedin.com/in/harper-austin-523743276/" target="_blank">LinkedIn</a>`
+            }
+
+            if (output.textContent === "-> Email: jharpaustin@gmail.com\n-> ADD RESUME\n-> LinkedIn \n-> "){
+                output.innerHTML += `<a href="https://github.com/harperaustin" target="_blank">GitHub</a>`
+                
+            }
+
+            output.innerHTML+= textCOT.charAt(indexCOT);
+            indexCOT++;
+            setTimeout(typeCOT,30);
+        } else {
+            textarea.disabled = false;
+            indexCOT = 0;
+        }
+    }
+
     function typePRJ(){
         if (indexPRJ < textPRJ.length) {
             if (output.textContent === "-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 250 users. Links: "){
@@ -264,6 +288,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 break;
             case "> FUN":
                 typeFUN();
+                break;
+            case "> COT":
+                typeCOT();
                 break;
             default: 
                 typeNOT();
