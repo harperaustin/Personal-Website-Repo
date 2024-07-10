@@ -6,20 +6,24 @@ document.addEventListener("DOMContentLoaded", function() {
     const text5= "-EDU -----> Education: Courses, Clubs, Activities"
     const text6= "-WRK -----> Work Experience"
     const text7= "-PRJ -----> Projects"
-    const text8= "-SKL -----> Skills, Languages, Certifications"
+    const text8= "-SKL -----> Languages, Certifications"
     const text9= "-COT -----> Contact info, Resume, GitHub, LinkedIn"
     const text10= "-FUN -----> Hobbies, Interests, Fun facts"
 
     const textABT = 
     "-> Hello, I am Harper Austin and I am from Keller, TX. I am eager to use my technical skills, problem-solving ability, and creative mind to construct effective intersections between technology and fields such as the environment, sports, design, and media."
-    const textNOT = "Command not recognized."
+    const textNOT = "-> Command not recognized."
 
     const textEDU = 
     "-> Pursuing a Bachelor of Science in Computer Science at Brown University.\n-> Relevant Courses: Object-Oriented Programming, Program Design with Data Structures and Algorithms, Discrete Structures and Probability, Foundations of AI, Computer Systems.\n-> Clubs: Machine Intelligence Community, Men's Club Soccer.\n-> Current Undergraduate Teaching Assistant for CSCI 0150: Object-Oriented Programming."
 
     const textWRK = "-> Outlier.AI, AI Evaluator, May 2024 - Present\n  --> Evaluated the ability of LLMs to call API tools like Google Maps and Google Search to satisfy user requests.\n\n-> Labelbox, AI Tutor, June 2024 - Present\n  --> Assessed and compared the correctness and completeness of AI-generated responses from models such as Claude 3.5 Sonnet and Gemini 1.5 Pro to fulfill prompts with complex mathematical requests (calculus, number theory, linear algebra)."
 
-    const textPRJ = `-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 250 users. Links: , <Source Code>`
+    const textPRJ = `-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 250 users. Links: ,  \n\n-> Personal Wesbite, HTML CSS JavaScript\n --> Retro-style terminal website used to showcase personal information, skills, and history.  `
+
+    const textSKL = "-> Languages: Python, Java, Swift, HTML, CSS, JavaScript, SwiftUI, Lean. Version Control: Git, GitHub. \n-> Certifications: _________"
+
+    const textFUN = "-> I've played soccer since I was 3 years old and it's still my favorite sport.\n-> I love traveling and the outdoors. I plan on going to Yellowstone or Yosemite for the first time in the coming years.\n-> I enjoy reading in my free time. My favorite author at the moment is Haruki Murakami."
 
     const typingtext1 = document.getElementById("title");
     const typingtext2 = document.getElementById("about");
@@ -38,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let indexEDU = 0;
     let indexWRK = 0;
     let indexPRJ = 0;
+    let indexSKL = 0;
+    let indexFUN = 0;
 
     function typeOut() {
         if (index < text1.length){
@@ -193,10 +199,40 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    function typeSKL(){
+        if (indexSKL < textSKL.length) {
+            output.textContent += textSKL.charAt(indexSKL);
+            indexSKL++;
+            setTimeout(typeSKL,30);
+        } else {
+            textarea.disabled = false;
+            indexSKL = 0;
+        }
+    }
+
+    function typeFUN(){
+        if (indexFUN < textFUN.length) {
+            output.textContent += textFUN.charAt(indexFUN);
+            indexFUN++;
+            setTimeout(typeFUN,30);
+        } else {
+            textarea.disabled = false;
+            indexFUN = 0;
+        }
+    }
+
     function typePRJ(){
         if (indexPRJ < textPRJ.length) {
             if (output.textContent === "-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 250 users. Links: "){
                 output.innerHTML += `<a href="https://apps.apple.com/us/app/get-productive/id6499282666?itsct=apps_box_link&itscg=30200" target="_blank">App Store</a>`
+            }
+
+            if (output.textContent === "-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 250 users. Links: App Store, "){
+                output.innerHTML += `<a href="https://github.com/harperaustin/GetProductiveApp" target="_blank">Source Code</a>`
+            }
+
+            if (output.textContent === `-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 250 users. Links: App Store, Source Code \n\n-> Personal Wesbite, HTML CSS JavaScript\n --> Retro-style terminal website used to showcase personal information, skills, and history. `) {
+                output.innerHTML += `<a href="https://github.com/harperaustin/Personal-Website-Repo" target="_blank">Source Code</a>`
             }
             output.innerHTML += textPRJ.charAt(indexPRJ);
             indexPRJ++;
@@ -222,6 +258,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 break;
             case "> PRJ":
                 typePRJ();
+                break;
+            case "> SKL":
+                typeSKL();
+                break;
+            case "> FUN":
+                typeFUN();
                 break;
             default: 
                 typeNOT();
