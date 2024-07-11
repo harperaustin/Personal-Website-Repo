@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const textWRK = "-> Outlier.AI, AI Evaluator, May 2024 - Present\n  --> Evaluated the ability of LLMs to call API tools like Google Maps and Google Search to satisfy user requests.\n\n-> Labelbox, AI Tutor, June 2024 - Present\n  --> Assessed and compared the correctness and completeness of AI-generated responses from models such as Claude 3.5 Sonnet and Gemini 1.5 Pro to fulfill prompts with complex mathematical requests (calculus, number theory, linear algebra)."
 
-    const textPRJ = `-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 250 users. Links: ,  \n\n-> Personal Wesbite, HTML CSS JavaScript\n --> Retro-style terminal website used to showcase personal information, skills, and history.  `
+    const textPRJ = `-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 300 users. Links: ,  \n\n-> Personal Wesbite, HTML CSS JavaScript\n --> Retro-style terminal website used to showcase personal information, skills, and history.  `
 
     const textSKL = "-> Languages: Python, Java, Swift, HTML, CSS, JavaScript, SwiftUI, Lean. Version Control: Git, GitHub. \n-> Certifications: _________"
 
