@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const text5= "-EDU -----> Education: Courses, Clubs, Activities"
     const text6= "-WRK -----> Work Experience"
     const text7= "-PRJ -----> Projects"
-    const text8= "-SKL -----> Languages, Certifications"
+    const text8= "-SKL -----> Languages, skills"
     const text9= "-COT -----> Contact info, Resume, GitHub, LinkedIn"
     const text10= "-FUN -----> Hobbies, Interests, Fun facts"
 
@@ -17,15 +17,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const textEDU = 
     "-> Pursuing a Bachelor of Science in Computer Science at Brown University.\n-> Relevant Courses: Object-Oriented Programming, Program Design with Data Structures and Algorithms, Discrete Structures and Probability, Foundations of AI, Computer Systems.\n-> Clubs: Machine Intelligence Community, Men's Club Soccer.\n-> Current Undergraduate Teaching Assistant for CSCI 0150: Object-Oriented Programming."
 
-    const textWRK = "-> Outlier.AI, AI Evaluator, May 2024 - Present\n  --> Evaluated the ability of LLMs to call API tools like Google Maps and Google Search to satisfy user requests.\n\n-> Labelbox, AI Tutor, June 2024 - Present\n  --> Assessed and compared the correctness and completeness of AI-generated responses from models such as Claude 3.5 Sonnet and Gemini 1.5 Pro to fulfill prompts with complex mathematical requests (calculus, number theory, linear algebra)."
+    const textWRK = "-> Outlier.AI, AI Evaluator (Contract), May 2024 - Present\n  --> Evaluated the ability of LLMs to generate code for a specific user request, debugging, correcting, and explaining issues in order to improve model correctness.\n\n-> Labelbox, AI Tutor (Contract), June 2024 - Present\n  --> Assessed and compared the correctness and completeness of AI-generated responses from models such as Claude 3.5 Sonnet and Gemini 1.5 Pro to fulfill prompts with complex mathematical requests (calculus, number theory, linear algebra)."
 
-    const textPRJ = `-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 300 users. Links: ,  \n\n-> Personal Wesbite, HTML CSS JavaScript\n --> Retro-style terminal website used to showcase personal information, skills, and history.  `
+    const textPRJ = "-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 300 users. Links: ,  \n\n-> Code Librarian, Python\n --> Book recommendation program that finds you 3 different books, using 3 different technqiues, based on one input book: (1) Content similarites using natural language processing (spaCy), (2) web-scraping (Selenium), (3) Statistical analysis with various readability scores. \n --> Integrated openAI API to generate thorough explanations of each book recommendation.  \n\n -> Attacking or Defensive NN, Python\n --> A small neural network consisting of 2 input nodes, 1 hidden layer (with 2 nodes) and 1 output node. This neural network determines if a soccer player is an attacking or defensive player based on goals per game and assists per game.  "
 
-    const textSKL = "-> Languages: Python, Java, Swift, HTML, CSS, JavaScript, SwiftUI, Lean. Version Control: Git, GitHub. \n-> Certifications: _________"
+    const textSKL = "-> Languages: Python, Java, Swift, HTML, CSS, JavaScript, SwiftUI, Lean. Version Control: Git, GitHub."
 
     const textFUN = "-> I've played soccer since I was 3 years old and it's still my favorite sport.\n-> I love traveling and the outdoors. I plan on going to Yellowstone or Yosemite for the first time in the coming years.\n-> I enjoy reading in my free time. My favorite author at the moment is Haruki Murakami."
 
-    const textCOT = "-> Email: jharpaustin@gmail.com\n-> ADD RESUME\n->  \n->  "
+    const textCOT = "-> Email: jharpaustin@gmail.com\n-> \n->  \n->  "
 
     const typingtext1 = document.getElementById("title");
     const typingtext2 = document.getElementById("about");
@@ -227,11 +227,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function typeCOT(){
         if (indexCOT < textCOT.length) {
-            if (output.textContent === "-> Email: jharpaustin@gmail.com\n-> ADD RESUME\n-> ") {
+            if (output.textContent == "-> Email: jharpaustin@gmail.com\n-> ") {
+                output.innerHTML += '<a href="https://harper-austin-resume.tiiny.site" target="_blank">Resume<\a>'
+            }
+
+            if (output.textContent === "-> Email: jharpaustin@gmail.com\n-> Resume\n-> ") {
                 output.innerHTML += `<a href="https://www.linkedin.com/in/harper-austin-523743276/" target="_blank">LinkedIn</a>`
             }
 
-            if (output.textContent === "-> Email: jharpaustin@gmail.com\n-> ADD RESUME\n-> LinkedIn \n-> "){
+            if (output.textContent === "-> Email: jharpaustin@gmail.com\n-> Resume\n-> LinkedIn \n-> "){
                 output.innerHTML += `<a href="https://github.com/harperaustin" target="_blank">GitHub</a>`
                 
             }
@@ -247,16 +251,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function typePRJ(){
         if (indexPRJ < textPRJ.length) {
-            if (output.textContent === "-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 250 users. Links: "){
+            if (output.textContent === "-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 300 users. Links: "){
                 output.innerHTML += `<a href="https://apps.apple.com/us/app/get-productive/id6499282666?itsct=apps_box_link&itscg=30200" target="_blank">App Store</a>`
             }
 
-            if (output.textContent === "-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 250 users. Links: App Store, "){
+            if (output.textContent === "-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 300 users. Links: App Store, "){
                 output.innerHTML += `<a href="https://github.com/harperaustin/GetProductiveApp" target="_blank">Source Code</a>`
             }
 
-            if (output.textContent === `-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 250 users. Links: App Store, Source Code \n\n-> Personal Wesbite, HTML CSS JavaScript\n --> Retro-style terminal website used to showcase personal information, skills, and history. `) {
-                output.innerHTML += `<a href="https://github.com/harperaustin/Personal-Website-Repo" target="_blank">Source Code</a>`
+            if (output.textContent === "-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 300 users. Links: App Store, Source Code \n\n-> Code Librarian, Python\n --> Book recommendation program that finds you 3 different books, using 3 different technqiues, based on one input book: (1) Content similarites using natural language processing (spaCy), (2) web-scraping (Selenium), (3) Statistical analysis with various readability scores. \n --> Integrated openAI API to generate thorough explanations of each book recommendation. ") {
+                output.innerHTML += `<a href="https://github.com/harperaustin/CodeLibrarian" target="_blank">Source Code</a>`
+            }
+
+            if (output.textContent === "-> Get Productive, iOS Application, Swift\n  --> Used Swift and SwiftUI to develop and deploy Get Productive, a gamified productivity app with over 300 users. Links: App Store, Source Code \n\n-> Code Librarian, Python\n --> Book recommendation program that finds you 3 different books, using 3 different technqiues, based on one input book: (1) Content similarites using natural language processing (spaCy), (2) web-scraping (Selenium), (3) Statistical analysis with various readability scores. \n --> Integrated openAI API to generate thorough explanations of each book recommendation. Source Code \n\n -> Attacking or Defensive NN, Python\n --> A small neural network consisting of 2 input nodes, 1 hidden layer (with 2 nodes) and 1 output node. This neural network determines if a soccer player is an attacking or defensive player based on goals per game and assists per game. ") {
+                output.innerHTML += `<a href="https://github.com/harperaustin/Att-or-Def-Neural-Network" target="_blank">Source Code</a>`
             }
             output.innerHTML += textPRJ.charAt(indexPRJ);
             indexPRJ++;
@@ -296,7 +304,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 typeNOT();
                 break;
         }
-       
     }
 
     const textarea = document.getElementById("input");
